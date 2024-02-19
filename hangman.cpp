@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 #include <time.h>
+#include <algorithm> // For transform
+#include <cctype> // For toupper
 using namespace std;
 void PrintMessage(string message, bool printTop = true, bool printBottom = true)
 {
@@ -124,21 +126,21 @@ bool PrintWordAndCheckWin(string word, string guessed)
 }
 string LoadRandomWord(string path)
 {
-	int lineCount = 0;
-	string word;
-	vector<string> v;
-	ifstream reader(path);
-	if (reader.is_open())
-	{
-		while (std::getline(reader, word))
-			v.push_back(word);
+    int lineCount = 0;
+    string word;
+    vector<string> v;
+    ifstream reader(path);
+    if (reader.is_open())
+    {
+        while (std::getline(reader, word))
+            v.push_back(word); // Add the word to vector
 
-		int randomLine = rand() % v.size();
-
-		word = v.at(randomLine);
-		reader.close();
-	}
-	return word;
+        int randomLine = rand() % v.size();
+        word = v.at(randomLine);
+        transform(word.begin(), word.end(), word.begin(), ::toupper); // Convert to uppercase
+        reader.close();
+    }
+    return word;
 }
 int TriesLeft(string word, string guessed)
 {
@@ -173,9 +175,10 @@ int main()
 
 		char x;
 		cout << ">"; cin >> x;
+		x = toupper(x); // Convert guessed letter to uppercase
 
 		if (guesses.find(x) == string::npos)
-			guesses += x;
+    		guesses += x;
 
 		tries = TriesLeft(wordToGuess, guesses);
 
