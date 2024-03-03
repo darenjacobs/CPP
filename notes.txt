@@ -1,0 +1,22 @@
+# https://www.codesdope.com/cpp-subclass/
+# inheritence.cpp
+# subclass.cpp
+
+The tilde symbols (~) you see in the code are used to denote destructors in C++ classes. A destructor is a special member function of a class that is executed whenever an object of its class goes out of scope or is explicitly deleted. The main purpose of a destructor is to release resources that the object may have acquired during its lifetime. This can include freeing memory, closing files, or releasing network resources, among others.
+
+In your code, the tilde is used before the class names HomePet, Dog, Bird, and Fish to define the destructors for these classes:
+
+These destructors are currently empty, meaning they do not perform any specific action when an object of these classes is destroyed. However, they are defined as part of good programming practice. In more complex applications, destructors would be used to perform necessary cleanup for the class objects.
+
+Sure, destructors can be particularly useful when your class allocates dynamic memory or acquires other resources like file handles or database connections that need to be released when the class instance is destroyed to avoid resource leaks. Here's a hypothetical example showing how you might use the ~HomePet and ~Dog destructors to release resources:
+
+
+In this modified example:
+
+Both HomePet and Dog have dynamically allocated string members (color for HomePet and earsSize for Dog). We use pointers and allocate memory using new in their constructors.
+
+In the destructors ~HomePet() and ~Dog(), we release this memory using delete. This prevents memory leaks by ensuring that the memory allocated for these strings is properly freed when an instance of HomePet or Dog is destroyed.
+
+The destructors also print a message when an object is destroyed. This is more for demonstration purposes and to show when each destructor is called.
+
+Remember, while this example uses dynamic memory to illustrate the use of destructors, in modern C++ programming, it is recommended to use smart pointers (like std::unique_ptr or std::shared_ptr) to manage dynamic resources automatically, which helps avoid manual memory management and makes the code safer and cleaner.
