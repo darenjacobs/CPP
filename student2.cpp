@@ -39,6 +39,14 @@ public:
     void setId(int id) { this->id = id; }
 
     // Methods
+    void display() {
+        cout << "Name: "  << getName() << endl;
+        cout << "Campus: "  << getCampus() << endl;
+        cout << "Date of Birth: "  << getDob() << endl;
+        cout << "Issue Date: "  << getIssueDate() << endl;
+        cout << "Gender: "  << getGender() << endl;
+        cout << "Student ID Number: "  << getId() << endl;
+    }
     void printAbout()
     {
         cout << "I am a student" << endl;
@@ -58,6 +66,11 @@ public:
     void setYear(string year) { this->year = year; }
     string getYear() { return year; }
 
+    // derived class methods
+    void display() {
+        cout << "Year: " << getYear() << endl;
+        Student::display();
+    }
     void printAbout()
     {
         cout << "I am an Undergraduate" << endl;
@@ -68,7 +81,11 @@ int main()
 {
         Student s1("James Brown","Busch","10-12-2001","02-15-2022",'M',100012345);
         Undergraduate u1("Freshman","Michael Oliver","York","04-22-2003","09-02-2024",'M',100012346);
+        cout << "\n";
         s1.printAbout();
+        s1.display();
+        cout << "----------------\n";
         u1.printAbout();
+        u1.display();
         return  0;
 }
