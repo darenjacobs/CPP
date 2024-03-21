@@ -39,9 +39,18 @@ public:
         cout << "Color: " << getColor() << endl;
         cout << "Number of Doors: " << getNod() << endl;
     }
+
+    // Helper function to demangle the type name // in this case give me the class name
+    string demangle(const char* typeName) {
+    while(*typeName && !isalpha(*typeName)) {
+        ++typeName;
+    }
+    return string(typeName);
+}
+
     void aboutVehicle(int wheels)
     {
-        cout << "This vehicle has " << wheels << " wheels" << endl;
+        cout << "This vehicle is a "  << demangle(typeid(*this).name()) << " and has "  << wheels << " wheels" << endl;
     }
 };
 
