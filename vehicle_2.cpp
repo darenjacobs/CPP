@@ -66,14 +66,39 @@ public:
 class Car : public Vehicle // derived class
 {
 public:
-    int wheels = 2;
+    int wheels = 4;
     Car(string make, string model, string color, int num_doors)
     : Vehicle(make, model, color, num_doors) { }
 };
 
+class Suv : public Vehicle // derived class
+{
+public:
+    int wheels = 4;
+    Suv(string make, string model, string color, int num_doors)
+    : Vehicle(make, model, color, num_doors) { }
+};
+
+class Truck : public Vehicle //
+{
+public:
+    int wheels = 10;
+    Truck(string make, string model, string color, int num_doors)
+    : Vehicle(make, model, color, num_doors) { }
+};
+
+
 
 int main()
 {
+    Truck t("Cummins", "X15", "White", 2);
+    t.aboutVehicle(t.wheels);
+    t.display();
+    cout << "----------------------" << endl;
+    Suv s("Mazda", "CX-90", "Silver", 4);
+    s.aboutVehicle(s.wheels);
+    s.display();
+    cout << "----------------------" << endl;
     Motorcycle m("Honda", "Ninja", "Red", 0);
     m.aboutVehicle(m.wheels);
     m.display();
@@ -81,7 +106,6 @@ int main()
     Car c("Mitsubishi", "Eclipse", "Red", 2);
     c.aboutVehicle(c.wheels);
     c.display();
-
 
     return 0;
 }
