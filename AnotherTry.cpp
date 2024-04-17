@@ -1,3 +1,10 @@
+#ifdef _WIN32
+    #include <cstdlib>
+#elif __APPLE__
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <unistd.h>
+#endif
 #include <iostream>
 #include <iomanip>
 #include <math.h>
@@ -22,9 +29,12 @@ int main()
         cout << endl;
         // User menu display
         cout << "******** Selection Menu *******" << endl;
-        cout << "(1):  7 years at 5.35% interest" << endl;
-        cout << "(2): 15 years at 5.50% interest" << endl;
-        cout << "(3): 30 years at 5.75% interest" << endl;
+        // cout << "(1):  7 years at 5.35% interest" << endl;
+        cout << "(1):  " << term[0] << " years at " << rate[0] << "% interest" << endl;
+        // cout << "(2): 15 years at 5.50% interest" << endl;
+        cout << "(2): " << term[1] << " years at " << rate[1] << "% interest" << endl;
+        // cout << "(3): 30 years at 5.75% interest" << endl;
+        cout << "(3): " << term[2] << " years at " << rate[2] << "% interest" << endl;
         cout << "(Q): Quit program" << endl;
         // prompt for input
         cout << "Please enter your choice: ";
@@ -49,6 +59,9 @@ int main()
             break;
         case 'Q':
         case 'q':
+            cout << "Thank you for using the program" << endl;
+            // exit program
+            exit(0);
             break;
         default:
             cout << "Invalid Input\nPlease try again" << endl;
@@ -56,8 +69,6 @@ int main()
     }
 
     cout << endl;
-
-    system("PAUSE");
     return (0);
 } // end of main
 
@@ -97,6 +108,10 @@ void displayMonthlyPayment(double amt, double rate, int year)
             cout << setw(15) << right << setprecision(2) << interest;
             cout << endl;
         }
-        system("PAUSE");
+        #ifdef _WIN32
+            system("PAUSE");
+        #elif __APPLE__
+            system("./pause.sh");
+        #endif
     }
 }
