@@ -9,46 +9,48 @@ using namespace std;
 
 int main()
 {
-        string employee_name;
-        int years_employed, performance_factor;
+    string employee_name;
+    int performance_factor;
+    int number_of_years;
 
-        cout << "Please enter the employee's first name: ";
-        cin >> employee_name;
+    cout << "Please enter the employee's first name: ";
+    cin >> employee_name;
 
-        cout << "Please enter the employee's performance factor (0 to 100) " << endl;
+    cout << "Please enter the employee's performance factor (0 to 100) " << endl;
+    cin >> performance_factor;
+
+    // check if the performance factor is within range
+
+    while (performance_factor < 0 || performance_factor > 100)
+    {
+        cout << "The value you entered is outside of the performance factor range.  Please re-enter a value: " << endl;
         cin >> performance_factor;
+    }
 
-        // check if the performance factor is within range
+    if (performance_factor < 5)
+    {
+        cout << "No Bonus for " << employee_name << endl;
+    }
+    else if (performance_factor >= 5)
+    {
+        cout << "How many years has " << employee_name << " been with the company?" << endl;
+        cin >> number_of_years;
+    }
 
-        while (performance_factor < 0 || performance_factor > 100)
-        {
-                cout << "The value you entered is outside of the performance factor range.  Please re-enter a value: " << endl;
-                cin >> performance_factor;
-        }
+    // Check if years employed is a valid number.
+    while (number_of_years < 0)
+    {
+        cout << "You entered too few years. re-enter the number of years employed: " << endl;
+        cin >> number_of_years;
+    }
 
-        if (performance_factor < 5)
-	{
-	
-                cout << "No Bonus for " << employee_name << endl;
-        }
-	else if (performance_factor >= 5) 
-	{
-        	cout << "How many years has " << employee_name << " been with the company?" << endl;
-            	cin >> years_employed;
-	}
-
-             	while (years_employed <= 0)
-                {
-                	cout << "You entered too few years. re-enter the number of years employed: " << endl;
-                        cin >> years_employed;
-             	}
-
-               if (years_employed < 5)
-                 	cout << employee_name <<"'s bonus is 1% " << endl;
-                               
-             	else if (years_employed >= 5)
-
-          	cout << employee_name <<"'s bonus is 2% " << endl;
-
-        return 0;
-}              
+    if (number_of_years < 5)
+    {
+        cout << employee_name <<"'s bonus is 1% " << endl;
+    }
+    else if (number_of_years >= 5)
+    {
+        cout << employee_name <<"'s bonus is 2% " << endl;
+    }
+    return 0;
+}
