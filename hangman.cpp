@@ -1,3 +1,10 @@
+#ifdef _WIN32
+    #include <cstdlib>
+#elif __APPLE__
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <unistd.h>
+#endif
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -61,7 +68,7 @@ void DrawHangman(int guessCount = 0)
 
 	if (guessCount == 4)
 		PrintMessage("/  ", false, false);
-	
+
 	if (guessCount == 5)
 		PrintMessage("/| ", false, false);
 
@@ -126,7 +133,6 @@ bool PrintWordAndCheckWin(string word, string guessed)
 }
 string LoadRandomWord(string path)
 {
-    int lineCount = 0;
     string word;
     vector<string> v;
     ifstream reader(path);
@@ -152,7 +158,7 @@ int TriesLeft(string word, string guessed)
 	}
 	return error;
 }
-int main()
+void playGame()
 {
 	srand(time(0));
 	string guesses;
@@ -189,9 +195,16 @@ int main()
 	else
 		PrintMessage("GAME OVER");
 
-	/* system("pause"); //this line wont work on Linux or MacOS so remove it
-	getchar(); */
-  system( "read -n 1 -s -p \"Press any key to continue...\"" );
+	/* system("pause"); //this line wont work on Linux or MacOS so remove it */
+}
+int main() { 
+	char playAgain;
+	do {
+		playGame();
+		PrintMessage("Do you want to play again? (Y/N)");
+		cin >> playAgain;
+		playAgain = toupper(playAgain); // 
+	} while (playAgain == 'Y'); 
 	return 0;
 }
 /*
