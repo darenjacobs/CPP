@@ -197,14 +197,15 @@ void playGame()
 
 	/* system("pause"); //this line wont work on Linux or MacOS so remove it */
 }
-int main() { 
+int main()
+{
 	char playAgain;
 	do {
 		playGame();
 		PrintMessage("Do you want to play again? (Y/N)");
 		cin >> playAgain;
-		playAgain = toupper(playAgain); // 
-	} while (playAgain == 'Y'); 
+		playAgain = toupper(playAgain); // Change the char  to upper case
+	} while (playAgain == 'Y');
 	return 0;
 }
 /*
