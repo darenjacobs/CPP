@@ -52,7 +52,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }
-   
     return (int) msg.wParam;
 }
 
