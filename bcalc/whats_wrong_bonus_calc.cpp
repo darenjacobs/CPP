@@ -6,53 +6,53 @@ This program calculates the employee bonus based on two items, performance facto
 
 #include <iostream>
 
-using namespace std; 
+using namespace std;
 
 int main()
 {
 	string employee_name;
-	
-	int years_employed, performance_factor; 
 
-	cout << "Please enter the employee's first name: "; 
+	int years_employed, performance_factor;
+
+	cout << "Please enter the employee's first name: ";
 	cin >> employee_name;
 
 	cout << "Please enter the employee's performance factor (0 to 100) " << endl;
-	cin >> performance_factor; 
+	cin >> performance_factor;
 
 	// Check if the performance factor is within range.
 
 	while (performance_factor < 0 || performance_factor > 100)
 	{
-		cout << "The value you entered is outside of the performance factor range.  Please re-enter a value: " << endl; 
-		cin >> performance_factor; 
+		cout << "The value you entered is outside of the performance factor range.  Please re-enter a value: " << endl;
+		cin >> performance_factor;
 	}
 
-	if (performance_factor < 5) 
+	if (performance_factor < 5)
 	{
 		cout << "No Bonus for " << employee_name << endl; // If the performance factor is below 5 program should end end.
 	}
 	else if (performance_factor >= 5) // Prompt user for number of years with the company.
 	{
 			cout << "How many years has " << employee_name << " been with the company?" << endl;
-			cin >> years_employed; 
+			cin >> years_employed;
 	}
 
-			// check if the number of years is a valid entry. 
+			// check if the number of years is a valid entry.
 
-			while (years_employed < 0) 
+			while (years_employed < 0)
 			{
-				cout << "You entered too few years. re-enter the number of years employed: " << endl; 
-				cin >> years_employed; 
+				cout << "You entered too few years. re-enter the number of years employed: " << endl;
+				cin >> years_employed;
 			}
 
-			if (years_employed < 5) :
+			if (years_employed < 5)
 			{
-				cout << employee_name <<"'s bonus is 1% " << endl; 
-			}	
-			else if (years_employed >= 5) 
+				cout << employee_name <<"'s bonus is 1% " << endl;
+			}
+			else if (years_employed >= 5)
 			{
-					cout << employee_name <<"'s bonus is 2% " << endl; 
+					cout << employee_name <<"'s bonus is 2% " << endl;
 			}
 	return 0;
 }
