@@ -108,28 +108,29 @@ public:
     Game() : board(20, 20), snake({10, 10}), gameOver(false) {}
 
     void printBoard() {
-        system("clear"); // Clears the console screen, use "cls" on Windows.
-        for (int y = 0; y < board.getHeight(); ++y) {
-            for (int x = 0; x < board.getWidth(); ++x) {
-                Point p(x, y);
-                bool isSnakePart = false;
-                for (const Point& part : snake.getBody()) {
-                    if (part.x == x && part.y == y) {
-                        isSnakePart = true;
-                        break;
-                    }
+    // Clears the console screen and move cursor to home position
+    std::cout << "\033[2J\033[1;1H";
+    for (int y = 0; y < board.getHeight(); ++y) {
+        for (int x = 0; x < board.getWidth(); ++x) {
+            Point p(x, y);
+            bool isSnakePart = false;
+            for (const Point& part : snake.getBody()) {
+                if (part.x == x && part.y == y) {
+                    isSnakePart = true;
+                    break;
                 }
-                if (isSnakePart)
-                    std::cout << 'S';
-                else if (board.isFood(p))
-                    std::cout << 'F';
-                else
-                    std::cout << '.';
             }
-            std::cout << std::endl;
+            if (isSnakePart)
+                std::cout << 'S';
+            else if (board.isFood(p))
+                std::cout << 'F';
+            else
+                std::cout << '.';
         }
-        std::cout << "Score: " << snake.getBody().size() - 1 << std::endl;
+        std::cout << std::endl;
     }
+    std::cout << "Score: " << snake.getBody().size() - 1 << std::endl;
+}
 
     char getch() {
         char buf = 0;
