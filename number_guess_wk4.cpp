@@ -37,6 +37,8 @@ int main()
 	const int MAX_NUMBER = 100;  // This is the maximum number the user will guess. Ex: if this number is 5, the game will generate a number from 1 to 5.
 	const int MAX_GUESS = 10; // This is the maximum number of guesses the user has to guess the correct random number.
 	int play = 1;
+    string guessCountDescription; // declare guessCountDescription to use it later
+
 
 	while (play == 1)
 	{
@@ -54,7 +56,8 @@ int main()
 		while ((counter != MAX_GUESS) && (result != 0))
 		{
 			// Prompt the user to guess a number.
-			// if counter is 0 this is the user's first guess, so I will ask "Please guess".  If counter is greater than 0 then the user has guesses once before so I will ask the user to "Guess again."
+			// if counter is 0 this is the user's first guess, so I will ask "Please guess".
+            // If counter is greater than 0 then the user has guesses once before so I will ask the user to "Guess again."
 			if (counter == 0)
 			{
 				cout << endl << "Please guess: " << endl;
@@ -67,24 +70,27 @@ int main()
 			cin >> user_guess;
 
 			// Replaced guess_array[counter]; counter += 1; with the line below.
-			guess_array[counter++] = user_guess; // This serves two purposes. It increments the counter variable and fills the guess array elements with the user's current guess.
+			// This serves two purposes. It increments the counter variable and fills the guess array elements with the user's current guess.
+			guess_array[counter++] = user_guess;
 
 			// Display previous guesses
-			if (counter == 1) // if counter is one then the user has only made one guess so the word guess should be singular.  Thanks to my wife for pointing that out.
+            // if counter is 1 then the user has only made one guess so the word guess should be singular.
+			if (counter == 1)
 			{
-				cout << "Your previous guess was: ";
+                string guessCountDescription = "guess was";
 			}
 			else // Otherwise the user has made more than one guess so the word guesses should be plural.
 			{
-				cout << "Your previous guesses were: ";
+                string guessCountDescription = "guesses were";
 			}
+            cout << "Your previous " << guessCountDescription << ":" << endl;
 
 			for (int k = 0; k < counter; k++) // Loops through the user guesses. Putting 'k < MAX_GUESS' in the for-loop causes extraneous numbers in the cout line below.  Why???
 			{
 				cout << guess_array[k] << " ";  // Outputs the user guesses.
 			}
 
-			// Call the function review_guess to compare the guess to the random number
+			// Call the function review_uess to compare the guess to the random number
 			result = review_guess(user_guess, random_number);
 
 			switch (result) // if result function returns -1 then the user's guess is too low, 1 the user's guess is too high, 0 the user's guess matches.
@@ -122,4 +128,5 @@ int review_guess(int user_guess, int random_number) // Function to compare user'
 	{
 		return -1;
 	}
+    return 0;
 }
