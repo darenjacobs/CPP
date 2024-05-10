@@ -53,10 +53,9 @@ void userPrompt()
 	}
 
 	cout << "---------- Mortgage loan Rates ----------" << endl;
-	// cout << "1:  7 year term at 5.35% interest rate" << endl;
-	cout << "1: " << term[0] << "year term at " << interestRate[0] << "% interest rate" << endl;
-	cout << "2: 15 year term at 5.50% interest rate" << endl;
-	cout << "3: 30 year term at 5.75% interest rate" << endl;
+	cout << "1: " << term[0] << " year term at " << interestRate[0] << "% interest rate" << endl;
+	cout << "2: " << term[1] << " year term at " << interestRate[1] << "% interest rate" << endl;
+	cout << "3: " << term[2] << " year term at " << interestRate[2] << "% interest rate" << endl;
 	cout << "0: Quit the program" << endl;
 	cin >> termRate; // choose term/rate combo or exit program.
 
