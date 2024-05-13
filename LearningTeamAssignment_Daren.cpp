@@ -9,9 +9,9 @@ Write the program as a procedural C++ program. Allow the user to input the amoun
 •	7 year at 5.35%
 •	15 year at 5.5%
 •	30 year at 5.75%
-Use an array for the different loans. Display the mortgage payment amount. Then, list the loan balance and interest paid for each payment over 
-the term of the loan. On longer-term loans, the list will scroll off the screen. Do not allow the list to scroll off the screen, but rather 
-display a partial list and then allow the user to continue the list. Allow the user to loop back and enter new data or quit. Insert comments 
+Use an array for the different loans. Display the mortgage payment amount. Then, list the loan balance and interest paid for each payment over
+the term of the loan. On longer-term loans, the list will scroll off the screen. Do not allow the list to scroll off the screen, but rather
+display a partial list and then allow the user to continue the list. Allow the user to loop back and enter new data or quit. Insert comments
 in the program to document the program.
 
 */
@@ -71,9 +71,9 @@ void userPrompt()
 	while (goBack)
   {
 	  cout << "---------- Mortgage loan Rates ----------" << endl;
-	  cout << "1:  7 year term at 5.35% interest rate" << endl;
-	  cout << "2: 15 year term at 5.50% interest rate" << endl;
-	  cout << "3: 30 year term at 5.75% interest rate" << endl;
+      cout << "1: " << term[0] << " year term at " << interestRate[0] << "% interest rate" << endl;
+      cout << "2: " << term[1] << " year term at " << interestRate[1] << "% interest rate" << endl;
+      cout << "3: " << term[2] << " year term at " << interestRate[2] << "% interest rate" << endl;
 	  cout << "0: Quit the program" << endl;
 	  cin >> termRate; // choose term/rate combo or exit program.
 
