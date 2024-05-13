@@ -46,11 +46,6 @@ public:
         this->setAge(age);
         this->setColor(color);
         this->setName(name);
-
-        // You can set name, color and age as follows:
-        // this->name = name;
-        // this->age = age;
-        // this->color = color;
     }
     ~Dog() {}
     void setEarsSize(string earsSize){this->earsSize = earsSize;}
