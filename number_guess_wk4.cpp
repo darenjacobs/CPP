@@ -37,7 +37,7 @@ int main()
 	const int MAX_NUMBER = 100;  // This is the maximum number the user will guess. Ex: if this number is 5, the game will generate a number from 1 to 5.
 	const int MAX_GUESS = 10; // This is the maximum number of guesses the user has to guess the correct random number.
 	int play = 1;
-    string guessCountDescription; // declare guessCountDescription to use it later
+    string guess_tense; // string to say guess was or guesses were
 
 
 	while (play == 1)
@@ -77,15 +77,17 @@ int main()
             // if counter is 1 then the user has only made one guess so the word guess should be singular.
 			if (counter == 1)
 			{
-                string guessCountDescription = "guess was";
+                guess_tense = "guess was";
 			}
 			else // Otherwise the user has made more than one guess so the word guesses should be plural.
 			{
-                string guessCountDescription = "guesses were";
+                guess_tense = "guesses were";
 			}
-            cout << "Your previous " << guessCountDescription << ":" << endl;
+            cout << "Your previous " << guess_tense << ":" << endl;
 
-			for (int k = 0; k < counter; k++) // Loops through the user guesses. Putting 'k < MAX_GUESS' in the for-loop causes extraneous numbers in the cout line below.  Why???
+            // Loops through the user guesses. Putting 'k < MAX_GUESS' in the for-loop causes extraneous
+            // numbers in the cout line below.  Why???
+			for (int k = 0; k < counter; k++)
 			{
 				cout << guess_array[k] << " ";  // Outputs the user guesses.
 			}
@@ -95,8 +97,8 @@ int main()
 
 			switch (result) // if result function returns -1 then the user's guess is too low, 1 the user's guess is too high, 0 the user's guess matches.
 			{
-				case -1:  cout << endl << "The number is too low, try again." << endl; break;
-				case  1:  cout << endl << "The number is too high, try again." << endl; break;
+				case -1:  cout << endl << "\nThe number is too low, try again." << endl; break;
+				case  1:  cout << endl << "\nThe number is too high, try again." << endl; break;
 				case  0:  cout << endl << "Congradulations, you guessed the correct number!" << endl; break;
 			}
 
