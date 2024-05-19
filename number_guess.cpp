@@ -20,7 +20,7 @@ int review_guess(int, int); // function that compares the user's guess to the ra
 int main()
 {
     //  Constants - change these to change the parameters of the game.
-    const int MAX_NUMBER = 100;  // This is the maximum number the user will guess. Ex: if this number is 5, the game will generate a number from 1 to 5.
+    const int MAX_NUMBER = 1000;  // This is the maximum number the user will guess. Ex: if this number is 5, the game will generate a number from 1 to 5.
     const int MAX_GUESS = 10; // This is the maximum number of guesses the user has to guess the correct random number.
     char play = 'Y'; // Changed to char to handle 'Y' or 'N' input
     string guess_tense; // string to say guess was or guesses were
