@@ -8,13 +8,15 @@ public:
     string make;
     string model;
     string color;
-    int num_doors;
+    int doors;
+    int wheels;
 
-    Vehicle(string make, string model, string color, int num_doors) {
+    Vehicle(string make, string model, string color, int doors, int wheels) {
         setMake(make);
         setModel(model);
-        setNod(num_doors);
         setColor(color);
+        setNod(doors);
+        setNoW(wheels);
     }
 
     virtual ~Vehicle() {}
@@ -23,20 +25,25 @@ public:
     string getMake() { return make; }
     string getModel() { return model; }
     string getColor() { return color; }
-    int getNod() { return num_doors; }
+    int getNod() { return doors; }
+    int getNoW() {return wheels; }
 
     // Setters
     void setMake(string make) { this->make = make; }
     void setModel(string model) { this->model = model; }
     void setColor(string color) { this->color = color; }
-    void setNod(int num_doors) { this->num_doors = num_doors; }
+    void setNod(int doors) { this->doors = doors; }
+    void setNoW(int wheels) { this->wheels = wheels; }
 
     // Methods
     void display() {
         cout << "Make: " << getMake() << endl;
         cout << "Model: " << getModel() << endl;
         cout << "Color: " << getColor() << endl;
-        cout << "Number of Doors: " << getNod() << endl;
+        // only show Number of doors if its more than 0 so motorycles shouldn't show this sentence
+        if (getNod() > 0) {
+            cout << "Number of Doors: " << getNod() << endl;
+        }
     }
 
     // Helper function to demangle the type name
@@ -54,34 +61,26 @@ public:
 
 class Motorcycle : public Vehicle { // derived class
 public:
-    int wheels = 2;
-
-    Motorcycle(string make, string model, string color, int num_doors)
-        : Vehicle(make, model, color, num_doors) {}
+    Motorcycle(string make, string model, string color, int doors = 0, int wheels = 2)
+        : Vehicle(make, model, color, doors, wheels) {}
 };
 
 class Car : public Vehicle { // derived class
 public:
-    int wheels = 4;
-
-    Car(string make, string model, string color, int num_doors)
-        : Vehicle(make, model, color, num_doors) {}
+    Car(string make, string model, string color, int doors, int wheels = 4)
+        : Vehicle(make, model, color, doors, wheels) {}
 };
 
 class Suv : public Vehicle { // derived class
 public:
-    int wheels = 4;
-
-    Suv(string make, string model, string color, int num_doors)
-        : Vehicle(make, model, color, num_doors) {}
+    Suv(string make, string model, string color, int doors, int wheels = 4)
+        : Vehicle(make, model, color, doors, wheels) {}
 };
 
 class Truck : public Vehicle { // derived class
 public:
-    int wheels = 10;
-
-    Truck(string make, string model, string color, int num_doors)
-        : Vehicle(make, model, color, num_doors) {}
+    Truck(string make, string model, string color, int doors, int wheels = 10)
+        : Vehicle(make, model, color, doors, wheels) {}
 };
 
 int main() {
@@ -93,7 +92,7 @@ int main() {
     s.aboutVehicle(s.wheels);
     s.display();
     cout << "----------------------" << endl;
-    Motorcycle m("Honda", "Ninja", "Red", 0);
+    Motorcycle m("Honda", "Ninja", "Red");
     m.aboutVehicle(m.wheels);
     m.display();
     cout << "----------------------" << endl;
