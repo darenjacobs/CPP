@@ -29,11 +29,8 @@ int main()
         cout << endl;
         // User menu display
         cout << "******** Selection Menu *******" << endl;
-        // cout << "(1):  7 years at 5.35% interest" << endl;
         cout << "(1):  " << term[0] << " years at " << rate[0] << "% interest" << endl;
-        // cout << "(2): 15 years at 5.50% interest" << endl;
         cout << "(2): " << term[1] << " years at " << rate[1] << "% interest" << endl;
-        // cout << "(3): 30 years at 5.75% interest" << endl;
         cout << "(3): " << term[2] << " years at " << rate[2] << "% interest" << endl;
         cout << "(Q): Quit program" << endl;
         // prompt for input
